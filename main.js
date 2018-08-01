@@ -10,7 +10,7 @@ function multiply(a, b) {
     let counter = 1
     let c = 0
     while (counter <= b) {
-        c = c + a
+        c = add(c,a)
         counter++
     }
     return c
@@ -32,21 +32,28 @@ console.log("Factorial (4!)")
 
 function factorial(a) {
     let counter = a
-    let b = a
+    if (a===0){a=1}else{a=a}
     while (counter > 1){
-        b = multiply(b,counter-1)
+        // a = multiply(a,counter-1)
+        a = multiply(a,add(counter, -1))
         counter--
     }
-    return b
+    return a
 }
 console.log(factorial(4))
 console.log("Fibonacci's 8th number")
 
 function fibonacci (a) {
-    counter = 0
+    counter = 1
     let result = 0
+    let numberBeforeResult = 1
+    let twoNumbersBeforeResult = 0
     while (counter < a) {
-
+    twoNumbersBeforeResult = numberBeforeResult
+    numberBeforeResult = result
+    result = add(twoNumbersBeforeResult, numberBeforeResult)
+    counter++
     }
     return result
 }
+console.log(fibonacci(8))
